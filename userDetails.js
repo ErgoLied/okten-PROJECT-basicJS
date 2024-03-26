@@ -1,5 +1,21 @@
 const url = new URL(location.href);
-const userInfo = url.searchParams.get('user');
+const user = JSON.parse(url.searchParams.get('user'));
 
-// console.log(JSON.parse(userInfo));
-console.log(JSON.parse(userInfo));
+function renderUser(user) {
+    const userBlock = document.getElementById('userInfo');
+
+    for (const key in user) {
+
+
+        if (typeof user[key] === 'object') {
+
+            renderUser(user[key]);
+        } else {
+
+        }
+    }
+}
+
+renderUser(user);
+
+const postsButton = document.getElementById('posts');
